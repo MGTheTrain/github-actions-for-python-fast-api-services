@@ -15,7 +15,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
-          ACR_USERNAME: ${{ secrets.ACR_USR }}
-          ACR_PASSWORD: ${{ secrets.ACR_PWD }}
+          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
           PYTHON_VERSION: "3.11"
           WORKING_DIRECTORY: ./hello-world-service
