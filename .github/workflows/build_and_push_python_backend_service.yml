@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: CI/CT Action for Python Backend Services
-        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-python-backend-services
+        uses: MGTheTrain/github-actions@main/.github/actions/ci-ct-action-for-python-backend-services
         with:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
