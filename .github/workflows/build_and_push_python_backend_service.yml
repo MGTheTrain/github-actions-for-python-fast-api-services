@@ -10,9 +10,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build and Push debian package
-        uses: MGTheTrain/github-actions@main
+        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-python-backend-services
         with:
-          path: .github/actions/ci-ct-action-for-python-backend-services/action.yml
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
           ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
