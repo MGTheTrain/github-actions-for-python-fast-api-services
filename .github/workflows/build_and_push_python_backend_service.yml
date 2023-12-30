@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and Push debian package
+      - name: CI/CT Action for Python Backend Services
         uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-python-backend-services
         with:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
