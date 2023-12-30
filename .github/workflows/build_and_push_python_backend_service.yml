@@ -10,7 +10,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Build and Push debian package
-        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-csharp-asp-net-core-services
+        uses: MGTheTrain/github-actions@main/.github/actions/ci-ct-action-for-csharp-asp-net-core-services
         with:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
