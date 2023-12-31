@@ -42,5 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [set_stage]
     steps:
+      - name: Checkout code
+        uses: actions/checkout@master
       - name: Create git tag from version file
         uses: MGTheTrain/github-actions/.github/actions/create-git-tag-from-version-file@main
