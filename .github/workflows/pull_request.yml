@@ -18,16 +18,16 @@ jobs:
         run: |
           echo "Running on branch ${{ github.base_ref }}"
           if [ "${{ github.base_ref }}" == "master" ]; then
-            echo "::set-output name=revision_number::prerelease${{ github.run_number }}"
+            echo "revision_number=prerelease${{ github.run_number }}" >> $GITHUB_OUTPUT
           elif [ "${{ github.base_ref }}" == "develop" ]; then
-            echo "::set-output name=revision_number::dev${{ github.run_number }}"
+            echo "revision_number=dev${{ github.run_number }}" >> $GITHUB_OUTPUT
           fi
           semantic_version=$(cat version)
-          echo "::set-output name=semantic_version::$semantic_version"
+          echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
       - name: Print Revision number
-        run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
+        run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.revision_number }}'"
       - name: Print Semantic version
-        run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.revision_number }}'"
+        run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
     outputs:
       revision_number: ${{ steps.branch_check.outputs.revision_number }}
       semantic_version: ${{ steps.branch_check.outputs.semantic_version }}
@@ -48,3 +48,5 @@ jobs:
           PYTHON_VERSION: "3.11"
           WORKING_DIRECTORY: ./
           DOCKER_IMAGE_NAME: python-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
+          
+          

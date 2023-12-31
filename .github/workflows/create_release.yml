@@ -16,7 +16,7 @@ jobs:
         id: branch_check
         run: |
           semantic_version=$(cat version)
-          echo "::set-output name=semantic_version::$semantic_version"
+          echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
       - name: Print Semantic version
         run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
     outputs:
@@ -46,4 +46,3 @@ jobs:
         uses: actions/checkout@master
       - name: Create git tag from version file
         uses: MGTheTrain/github-actions/.github/actions/create-git-tag-from-version-file@main
-  
