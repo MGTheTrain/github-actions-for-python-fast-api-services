@@ -1,10 +1,9 @@
 name: CI/CT workflow for Python FastAPI service docker image
 
 on:
-  pull_request:
+  push:
     branches: 
       - master
-      - develop
 
 jobs:
   set_stage:
