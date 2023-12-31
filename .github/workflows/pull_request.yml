@@ -18,12 +18,12 @@ jobs:
         run: |
           echo "Running on branch ${{ github.base_ref }}"
           if [ "${{ github.base_ref }}" == "master" ]; then
-            echo "::set-output name=revision_number::prerelease${{ github.run_number }}"
+            echo "revision_number=prerelease${{ github.run_number }}" >> $GITHUB_OUTPUT
           elif [ "${{ github.base_ref }}" == "develop" ]; then
-            echo "::set-output name=revision_number::dev${{ github.run_number }}"
+            echo "revision_number=dev${{ github.run_number }}" >> $GITHUB_OUTPUT
           fi
           semantic_version=$(cat version)
-          echo "::set-output name=semantic_version::$semantic_version"
+          echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
       - name: Print Revision number
         run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.revision_number }}'"
       - name: Print Semantic version
