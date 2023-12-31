@@ -24,9 +24,9 @@ jobs:
           fi
           semantic_version=$(cat version)
           echo "::set-output name=semantic_version::$semantic_version"
-      - name: Print Semantic version
-        run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
       - name: Print Revision number
+        run: echo "revision_number for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
+      - name: Print Semantic version
         run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.revision_number }}'"
     outputs:
       revision_number: ${{ steps.branch_check.outputs.revision_number }}
