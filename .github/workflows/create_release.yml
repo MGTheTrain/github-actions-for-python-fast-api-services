@@ -44,4 +44,3 @@ jobs:
     steps:
       - name: Create git tag from version file
         uses: MGTheTrain/github-actions/.github/actions/create-git-tag-from-version-file@main
-  
