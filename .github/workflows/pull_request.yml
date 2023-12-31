@@ -11,6 +11,8 @@ jobs:
     name: Determine Stage
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@master
       - name: Set revision_number by branch and semantic_version
         id: branch_check
         run: |
