@@ -37,7 +37,7 @@ jobs:
           ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
           PYTHON_VERSION: "3.11"
           WORKING_DIRECTORY: ./
-          DOCKER_IMAGE_NAME: python-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
+          DOCKER_IMAGE_NAME: python-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}
   create-git-tags-from-version-file-job:
     runs-on: ubuntu-latest
     needs: [set_stage]
