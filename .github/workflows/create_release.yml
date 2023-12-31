@@ -2,47 +2,49 @@ name: CI/CT workflow for Python FastAPI service docker image
 
 on:
   push:
-    branches: 
-      - master
+    # branches: 
+    #   - master
 
 jobs:
-  set_stage:
-    name: Determine Stage
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Set semantic_version 
-        id: branch_check
-        run: |
-          semantic_version=$(cat version)
-          echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
-      - name: Print Semantic version
-        run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
-    outputs:
-      semantic_version: ${{ steps.branch_check.outputs.semantic_version }}
-  ci-ct-job-for-python-fast-api-services:
-    runs-on: ubuntu-latest
-    needs: [set_stage]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: CI/CT Action for Python Backend Services
-        uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-python-backend-services@main
-        with:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
-          ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
-          ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
-          ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
-          PYTHON_VERSION: "3.11"
-          WORKING_DIRECTORY: ./
-          DOCKER_IMAGE_NAME: python-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
+  # set_stage:
+  #   name: Determine Stage
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@master
+  #     - name: Set semantic_version 
+  #       id: branch_check
+  #       run: |
+  #         semantic_version=$(cat version)
+  #         echo "semantic_version=$semantic_version" >> $GITHUB_OUTPUT
+  #     - name: Print Semantic version
+  #       run: echo "semantic_version for branch '${{ github.base_ref }}' is '${{ steps.branch_check.outputs.semantic_version }}'"
+  #   outputs:
+  #     semantic_version: ${{ steps.branch_check.outputs.semantic_version }}
+  # ci-ct-job-for-python-fast-api-services:
+  #   runs-on: ubuntu-latest
+  #   needs: [set_stage]
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@master
+  #     - name: CI/CT Action for Python Backend Services
+  #       uses: MGTheTrain/github-actions/.github/actions/ci-ct-action-for-python-backend-services@main
+  #       with:
+  #         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  #         SNYK_ORGANIZATION_ID: ${{ secrets.SNYK_ORGANIZATION_ID }}
+  #         ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }} 
+  #         ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+  #         ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  #         PYTHON_VERSION: "3.11"
+  #         WORKING_DIRECTORY: ./
+  #         DOCKER_IMAGE_NAME: python-hello-world-service:${{ needs.set_stage.outputs.semantic_version }}-${{ needs.set_stage.outputs.revision_number }}
   create-git-tags-from-version-file-job:
     runs-on: ubuntu-latest
-    needs: [set_stage]
+    # needs: [set_stage]
     steps:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create git tag from version file
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         uses: MGTheTrain/github-actions/.github/actions/create-git-tag-from-version-file@main
