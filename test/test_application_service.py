@@ -1,5 +1,5 @@
-import pytest
 from application.services.hello_world_service import HelloWorldService
+
 
 class TestHelloWorldService:
     def test_get_hello_world_message(self):
