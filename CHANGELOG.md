@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2023-12-31
+## [0.1.1] - 2024-01-01
 
 ### Added
 
-- Initial project setup
+- Github Action workflow for linting and auto-formatting
 
 ### Fixed
 
@@ -25,11 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 /
 
-## [0.1.1] - 2023-12-31
+## [0.1.0] - 2023-12-31
 
 ### Added
 
-- Github Action workflow for linting and auto-formatting
+- Initial project setup
 
 ### Fixed
 
