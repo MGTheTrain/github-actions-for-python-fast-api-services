@@ -24,3 +24,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 /
+
+## [0.1.1] - 2023-12-31
+
+### Added
+
+- Github Action workflow for linting and auto-formatting
+
+### Fixed
+
+/
+
+### Changed
+
+/
+
+### Removed
+
+/
