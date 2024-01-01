@@ -1,4 +1,3 @@
-import pytest
 from application.services.hello_world_service import HelloWorldService
 
 class TestHelloWorldService:
